@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Любимке</title>
+</head>
+<body>
+    <div id="head"><p>Я люблю тебя больше, чем Море, и Небо, и Пение,
+        <br>Я люблю тебя дольше, чем дней мне дано на земле.
+        <br>Ты одна мне горишь, как звезда в тишине отдаления,
+        <br>Ты корабль, что не тонет ни в снах, ни в волнах,
+        ни во мгле.</p></div>
+    <div>
+        <p id="in">До нашей встречи осталось всего</p>
+        <div id="timer"></div>
+    </div>
+    <p id="bot">Люблю тебя каждую секунду своей жизни</p>
+    <img  id="hear-l" src="heart.png" alt="">
+    <img  id="hear-r" src="heart.png" alt="">
+    <style>
+        #hear-l {
+            display: block;
+            position: absolute;
+            left: -33px;
+            opacity: 0.3;
+            bottom: 10px;
+            transform: rotate(25deg);
+            scale: 2.5;
+        }
+        #hear-r {
+            display: block;
+            position: absolute;
+            right: -33px;
+            bottom: 10px;
+            opacity: 0.3;
+            transform: rotate(-25deg);
+            scale: 2.5;
+        }
+        body{
+            background: linear-gradient(to right, rgb(180, 142, 218), 20%, rgb(140, 108, 145), 80%, rgb(146, 111, 146));
+        }
+        #in {
+            font-size: 40px;
+            margin-top: 10%;
+            margin-bottom: 0;
+            text-align: center;
+            font-style: italic;
+        }
+        #timer {
+            background-color: #ffffff1e;
+            text-align: center;
+            font-size: 50px;
+            color: rgb(26, 26, 26);
+            font-weight: bold;
+            font-style: italic;
+        }
+        #head {
+            margin: auto;
+            padding: 5px;
+            width: 95%;
+            background-color: #ffffff57;
+            border-radius: 10px;
+            text-align: center;
+            font-size: 45px;
+            color: rgb(26, 26, 26);
+            font-style: italic;
+        }
+        #bot {
+            margin-top: 10%;
+            text-align: center;
+            font-size: 35px;
+            color: rgb(26, 26, 26);
+            font-style: italic;
+        }
+        @font-face{
+            font-family:"Century";
+            src: url("/font/Century.ttf")
+            format("truetype"); 
+            font-style: normal; 
+            font-weight: normal; 
+        }
+    </style>
+
+    <script>
+        function timer() {
+        var nowDate = new Date();
+        var achiveDate = new Date(2025,6,6,16, 24,0);
+        var result = (achiveDate - nowDate)+1000;
+        if (result < 0) {
+            var elmnt = document.getElementById('timer');
+            elmnt.innerHTML = ' - : - - : - - : - - ';
+            return undefined;
+        }
+        var seconds = Math.floor((result/1000)%60);
+        var minutes = Math.floor((result/1000/60)%60);
+        var hours = Math.floor((result/1000/60/60)%24);
+        var days = Math.floor(result/1000/60/60/24);
+        if (seconds < 10) seconds = '0' + seconds;
+        if (minutes < 10) minutes = '0' + minutes;
+        if (hours < 10) hours = '0' + hours;
+        var elmnt = document.getElementById('timer');
+        elmnt.innerHTML = days + ' дня ' + hours + ' ч ' + minutes + ' мин ' + seconds + " сек ";
+        setTimeout(timer, 1000);
+    }
+    window.onload = function() {
+        timer();
+    }
+    </script>
+</body>
+</html>
